@@ -253,21 +253,96 @@ def run(kwargs):
 	testmode = kwargs['testmode']
 	if testmode:
 		import contract
-		from Genetic import mutation, crossover, fitness, individual, population
-		from Genetic.individual import Individual #@UnusedImport 
+		import mutation, crossover, fitness, individual, population
 		contract.checkmod(__name__)
 		for mod in [crossover, fitness, individual, mutation, population, selection, vis]:
 			contract.checkmod(mod)
 	
 	kwargs.pop('algorithm')(kwargs)
 
+
+def runKnapsackGA(kwargs):
+	# # # # # # PARAMETERS # # # # # #
+	maxGens = kwargs['maxGens']
+	targetscore = kwargs['targetscore']
+	genfunc = kwargs['genfunc']
+	genparams = kwargs['genparams']
+
+	scorefunc = kwargs['scorefunc']
+	scoreparams = kwargs['scoreparams']
+
+	selectfunc = kwargs['selectfunc']
+	selectparams = kwargs['selectparams']
+
+	numcross = kwargs['numcross']
+	crossfunc = kwargs['crossfunc']
+	crossfuncs = kwargs['crossfuncs']
+	crossprob = kwargs['crossprob']
+	crossparams = kwargs['crossparams']
+
+	mutfunc = kwargs['mutfunc']
+	mutprob = kwargs['mutprob']
+	mutparams = kwargs['mutparams']
+
+	SCORES = kwargs['SCORES']
+	getWheel = kwargs['getWheel']
+	# # # # # # /PARAMETERS # # # # # #
+
+	pop = genfunc(*genparams)
+	for p in pop:
+		if p not in SCORES:
+			SCORES[p] = scorefunc(p, *scoreparams)
+
+	best = max(SCORES, key=SCORES.__getitem__)
+	best = best, SCORES[best]  # indiv, score
+
+	g = 0
+	while g < maxGens:
+		if getWheel:
+			wheel = selection.getRouletteWheel(pop, SCORES)
+
+		newpop = []
+		for _ in xrange(numcross):
+			if getWheel:
+				p1 = selectfunc(wheel, *selectparams)
+				p2 = selectfunc(wheel, *selectparams)
+			else:
+				p1, p2 = selectfunc(pop, *selectparams)
+			if rand() <= crossprob:
+				c1, c2 = crossfunc(p1, p2, crossfuncs, crossparams)
+				newpop.extend([c1, c2])
+
+		for i, p in enumerate(newpop):
+			if rand() <= mutprob:
+				newpop[i] = mutfunc(p, *mutparams)
+				p = newpop[i]
+			SCORES[p] = scorefunc(p, *scoreparams)
+
+		pop = sorted(pop + newpop, key=SCORES.__getitem__, reverse=True)[:len(pop)]
+
+		fittest = max(pop, key=SCORES.__getitem__)
+		fittest = fittest, SCORES[fittest]
+		log.info(
+			"Generation %03d | highest fitness: %s | fittest indiv: %r" % (g, fittest[1], fittest[0].chromosomes[0]))
+
+		if fittest[1] > best[1]:
+			best = fittest
+
+			if best[1] >= targetscore:
+				log.info("Found best solution\n")
+				return best[0], g
+		g += 1
+
+	return best, g
+
 if __name__ == "__main__":
-	print 'starting'
-	import settings
-	kwargs = settings.getTSPSettings()
+	import settings, time
+	start = time.time()
+
+	log.info("starting\n")
+	kwargs = settings.getKnapsackSettings()
 	answer = run(kwargs)
+	log.info("done")
 
-	# settings = settings.getOneMaxSettings()
-	# answer = run(settings)
-
-	print 'done'
+	end = time.time()
+	log.info("Time elapsed: " + str(round(end - start, 4)) + " seconds")
