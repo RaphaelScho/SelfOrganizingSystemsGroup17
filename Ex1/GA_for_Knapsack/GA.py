@@ -18,6 +18,7 @@ import selection, visualization as vis
 
 from random import random as rand
 import logging as log
+import matplotlib.pyplot as plt
 
 #for mod in [crossover, fitness, individual, mutation, population, selection, vis]:
 #	contract.checkmod(mod)
@@ -262,6 +263,13 @@ def run(kwargs):
 
 
 def runKnapsackGA(kwargs):
+
+	def plot(progress):
+		plt.plot(progress)
+		plt.xlabel("Generation")
+		plt.ylabel("Value")
+		plt.show()
+
 	# # # # # # PARAMETERS # # # # # #
 	maxGens = kwargs['maxGens']
 	targetscore = kwargs['targetscore']
@@ -297,6 +305,7 @@ def runKnapsackGA(kwargs):
 	best = best, SCORES[best]  # indiv, score
 
 	g = 0
+	progress = []
 	while g < maxGens:
 		if getWheel:
 			wheel = selection.getRouletteWheel(pop, SCORES)
@@ -330,10 +339,13 @@ def runKnapsackGA(kwargs):
 
 			if best[1] >= targetscore:
 				log.info("Found best solution\n")
-				return best[0], g
+				plot(progress)
+				return best[0], g, progress
 		g += 1
+		progress.append(best[1])
 
-	return best, g
+	plot(progress)
+	return best, g, progress
 
 if __name__ == "__main__":
 	import settings, time

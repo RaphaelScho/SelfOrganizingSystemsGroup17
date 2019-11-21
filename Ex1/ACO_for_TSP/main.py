@@ -28,13 +28,15 @@ def main():
 		cost_matrix.append(row)
 	aco = ACO(50, 500, 1.0, 10.0, 0.5, 10, 0)
 	graph = Graph(cost_matrix, rank)
-	path, cost = aco.solve(graph)
+	path, cost, time = aco.solve(graph)
 	print('cost: {}, path: {}'.format(cost, path))
 	plot(points, path)
+	return time
 
 
 if __name__ == '__main__':
 	start = time.time()
-	main()
+	best_time = main()
 	end = time.time()
 	print("Time elapsed: " + str(round(end - start, 4)) + " seconds")
+	print("Found best solution after " + str(round(best_time -start, 4)) + " seconds")

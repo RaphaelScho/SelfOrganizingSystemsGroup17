@@ -1,5 +1,6 @@
 import random
-
+import matplotlib.pyplot as plt
+import time
 
 class Graph(object):
 	def __init__(self, cost_matrix: list, rank: int):
@@ -47,6 +48,8 @@ class ACO(object):
 		"""
 		best_cost = float('inf')
 		best_solution = []
+		best_time = time.time()
+		progress = []
 		for gen in range(self.generations):
 			# noinspection PyUnusedLocal
 			ants = [_Ant(self, graph) for i in range(self.ant_count)]
@@ -57,11 +60,18 @@ class ACO(object):
 				if ant.total_cost < best_cost:
 					best_cost = ant.total_cost
 					best_solution = [] + ant.tabu
+					best_time = time.time()
 				# update pheromone
 				ant._update_pheromone_delta()
 			self._update_pheromone(graph, ants)
 			# print('generation #{}, best cost: {}, path: {}'.format(gen, best_cost, best_solution))
-		return best_solution, best_cost
+			progress.append(best_cost)
+
+		plt.plot(progress)
+		plt.xlabel("Generation")
+		plt.ylabel("Distance")
+		plt.show()
+		return best_solution, best_cost, best_time
 
 
 class _Ant(object):
