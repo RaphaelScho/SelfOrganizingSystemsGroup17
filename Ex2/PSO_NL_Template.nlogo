@@ -336,17 +336,17 @@ end
 
 ; dummy random constrinat to be implemented by students
 to-report constrain_1 [x y]
-  report FALSE
+  report (x ^ 2 + y ^ 2 < 6000)
 end
 
 ; dummy random constrinat to be implemented by students
 to-report constrain_2 [x y]
-  report FALSE
+  report ((x > 3 * y) or (3 * x > y))
 end
 
 ; dummy random constrinat to be implemented by students
 to-report constrain_3 [x y]
-  report FALSE
+  report ((x > y + 20) or (x < y - 20))
 end
 
 ; dummy random constrinat to be implemented by students
@@ -635,7 +635,7 @@ CHOOSER
 highlight-mode
 highlight-mode
 "None" "Best found" "True best"
-1
+2
 
 MONITOR
 320
@@ -682,7 +682,7 @@ SWITCH
 143
 Constraints
 Constraints
-1
+0
 1
 -1000
 
@@ -788,7 +788,7 @@ CHOOSER
 Constraint
 Constraint
 "Example" "Constraint 1" "Constraint 2" "Constraint 3" "Constraint 4" "Constraint 5" "Constraint 6" "Constraint 7" "Constraint 8" "Constraint 9" "Constraint 10"
-0
+3
 
 PLOT
 10
