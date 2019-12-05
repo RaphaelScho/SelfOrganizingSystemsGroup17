@@ -303,9 +303,9 @@ to-report fittness_function_1 [x y]
   report random-normal 0 1;
 end
 
-; dummy random fitness function to be implemented by students
+; schwefel function
 to-report fittness_function_2 [x y]
-  report random-normal 0 1;
+  report 418.9829 * 2 - x * sin(sqrt(abs(x)) - y * sin(sqrt(abs(y)));
 end
 
 ; dummy random fitness function to be implemented by students
