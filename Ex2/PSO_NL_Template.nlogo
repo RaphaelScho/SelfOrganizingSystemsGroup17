@@ -305,7 +305,7 @@ end
 
 ; schwefel function
 to-report fittness_function_2 [x y]
-  report 418.9829 * 2 - x * sin(sqrt(abs(x)) - y * sin(sqrt(abs(y)));
+  report 418.9829 * 2 - x * sin(sqrt(abs(x))) - y * sin(sqrt(abs(y)));
 end
 
 ; dummy random fitness function to be implemented by students
@@ -313,14 +313,14 @@ to-report fittness_function_3 [x y]
   report random-normal 0 1;
 end
 
-; dummy random fitness function to be implemented by students
+; schaffer function
 to-report fittness_function_4 [x y]
-  report random-normal 0 1;
+  report 0.5 + (sin(x ^ 2 - y ^ 2) ^ 2 - 0.5) / (1 + 0.001 * (x ^ 2 + y ^ 2)) ^ 2;
 end
 
-; dummy random fitness function to be implemented by students
+; eggholder function
 to-report fittness_function_5 [x y]
-  report random-normal 0 1;
+  report (-(y + 47) * sin(sqrt(abs(y + x / 2 + 47))) - x * sin(sqrt(abs(x - y - 47))));
 end
 
 ; dummy random fitness function to be implemented by students
@@ -336,17 +336,17 @@ end
 
 ; dummy random constrinat to be implemented by students
 to-report constrain_1 [x y]
-  report (x ^ 2 + y ^ 2 < 6000)
+  report FALSE
 end
 
 ; dummy random constrinat to be implemented by students
 to-report constrain_2 [x y]
-  report ((x > 3 * y) or (3 * x > y))
+  report FALSE
 end
 
 ; dummy random constrinat to be implemented by students
 to-report constrain_3 [x y]
-  report ((x > y + 20) or (x < y - 20))
+  report FALSE
 end
 
 ; dummy random constrinat to be implemented by students
@@ -635,7 +635,7 @@ CHOOSER
 highlight-mode
 highlight-mode
 "None" "Best found" "True best"
-2
+1
 
 MONITOR
 320
@@ -682,7 +682,7 @@ SWITCH
 143
 Constraints
 Constraints
-0
+1
 1
 -1000
 
@@ -788,7 +788,7 @@ CHOOSER
 Constraint
 Constraint
 "Example" "Constraint 1" "Constraint 2" "Constraint 3" "Constraint 4" "Constraint 5" "Constraint 6" "Constraint 7" "Constraint 8" "Constraint 9" "Constraint 10"
-3
+0
 
 PLOT
 10
