@@ -345,17 +345,17 @@ end
 
 ; dummy random constrinat to be implemented by students
 to-report constrain_1 [x y]
-  report FALSE
+  report (x ^ 2 + y ^ 2 < 6000)
 end
 
 ; dummy random constrinat to be implemented by students
 to-report constrain_2 [x y]
-  report FALSE
+  report ((x > 3 * y) or (3 * x > y))
 end
 
 ; dummy random constrinat to be implemented by students
 to-report constrain_3 [x y]
-  report FALSE
+  report ((x > y + 20) or (x < y - 20))
 end
 
 ; dummy random constrinat to be implemented by students
