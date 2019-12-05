@@ -252,10 +252,19 @@ to update-particle-positions
     ]
 
     [
-       ; face in the direction of my velocity
-       facexy (xcor + vx) (ycor + vy)
-       ; and move forward by the magnitude of my velocity
-       forward sqrt (vx * vx + vy * vy)
+      ; The Penalty constraint handling is realized here:
+      ; If a point violates a constraint, it is penalized
+      ; by doings something ????
+      ifelse ( (violates x y) and (constraints = TRUE) and (constraint_handling_method = "Penalty Method") )
+      [
+        ; TODO IMPLEMENT PENALTY SEE Swarm_Intelligence_1 page 70
+      ]
+      [
+        ; face in the direction of my velocity
+        facexy (xcor + vx) (ycor + vy)
+        ; and move forward by the magnitude of my velocity
+        forward sqrt (vx * vx + vy * vy)
+      ]
     ]
 
   ]
