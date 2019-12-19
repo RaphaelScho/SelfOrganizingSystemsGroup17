@@ -109,20 +109,28 @@ to initialize-topology
     ;check whether the patch violates a constrain
     ;if yes set its value to zero and color to red
     ;otherwise, set the patch color according to its value
-    ifelse  ((violates pxcor  pycor) and (constraints = TRUE))
+    ifelse  ((violates pxcor  pycor) and (constraints = TRUE) and (constraint_handling_method = "Rejection Method"))
      [
-         set val 0
-         set pcolor 15
+       set val 0
+       set pcolor 15
      ]
-
      [
+       ;handling Penalty method here
+       ;if penalty method is activated and patch violates contraint, its objective value is decremented by 1
+       ifelse  ((violates pxcor  pycor) and (constraints = TRUE) and (constraint_handling_method = "Penalty Method"))
+       [
+         set val (val - 1)
+         set pcolor 15
+       ]
+       [
          set pcolor scale-color gray val 0.0  1
-
+       ]
+       
      ]
 
     ]
 
-     ask max-one-of patches [val]
+  ask max-one-of patches [val]
   [
     set true-best-patch self
   ]
@@ -252,19 +260,10 @@ to update-particle-positions
     ]
 
     [
-      ; The Penalty constraint handling is realized here:
-      ; If a point violates a constraint, it is penalized
-      ; by doings something ????
-      ifelse ( (violates x y) and (constraints = TRUE) and (constraint_handling_method = "Penalty Method") )
-      [
-        ; TODO IMPLEMENT PENALTY SEE Swarm_Intelligence_1 page 70
-      ]
-      [
-        ; face in the direction of my velocity
-        facexy (xcor + vx) (ycor + vy)
-        ; and move forward by the magnitude of my velocity
-        forward sqrt (vx * vx + vy * vy)
-      ]
+      ; face in the direction of my velocity
+      facexy (xcor + vx) (ycor + vy)
+      ; and move forward by the magnitude of my velocity
+      forward sqrt (vx * vx + vy * vy)
     ]
 
   ]
@@ -644,7 +643,7 @@ CHOOSER
 highlight-mode
 highlight-mode
 "None" "Best found" "True best"
-1
+2
 
 MONITOR
 320
