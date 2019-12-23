@@ -82,17 +82,17 @@ to initialize-topology
      if fitness_function = "Fitness function 1"
        [set val fittness_function_1 pxcor pycor]
 
-     if fitness_function  = "Fitness function 2"
-       [set val fittness_function_2 pxcor pycor]
+     if fitness_function  = "Schwefel"
+       [set val fittness_function_schwefel pxcor pycor]
 
      if fitness_function = "Fitness function 3"
        [set val fittness_function_3 pxcor pycor]
 
-     if fitness_function = "Fitness function 4"
-       [set val fittness_function_4 pxcor pycor]
+     if fitness_function = "Schaffer"
+       [set val fittness_function_schaffer pxcor pycor]
 
-     if fitness_function  = "Fitness function 5"
-       [set val fittness_function_5 pxcor pycor]
+     if fitness_function  = "Eggholder"
+       [set val fittness_function_eggholder pxcor pycor]
 
      if fitness_function = "Fitness function 6"
        [set val fittness_function_6 pxcor pycor]
@@ -312,7 +312,7 @@ to-report fittness_function_1 [x y]
 end
 
 ; schwefel function
-to-report fittness_function_2 [x y]
+to-report fittness_function_schwefel [x y]
   report 418.9829 * 2 - x * sin(sqrt(abs(x))) - y * sin(sqrt(abs(y)));
 end
 
@@ -322,12 +322,12 @@ to-report fittness_function_3 [x y]
 end
 
 ; schaffer function
-to-report fittness_function_4 [x y]
+to-report fittness_function_schaffer [x y]
   report 0.5 + (sin(x ^ 2 - y ^ 2) ^ 2 - 0.5) / (1 + 0.001 * (x ^ 2 + y ^ 2)) ^ 2;
 end
 
 ; eggholder function
-to-report fittness_function_5 [x y]
+to-report fittness_function_eggholder [x y]
   report (-(y + 47) * sin(sqrt(abs(y + x / 2 + 47))) - x * sin(sqrt(abs(x - y - 47))));
 end
 
@@ -542,7 +542,7 @@ population-size
 population-size
 1
 100
-13
+15
 1
 1
 NIL
@@ -557,7 +557,7 @@ personal-confidence
 personal-confidence
 0
 2
-0.8
+1
 0.1
 1
 NIL
@@ -572,7 +572,7 @@ swarm-confidence
 swarm-confidence
 0
 2
-1.6
+0.5
 0.1
 1
 NIL
@@ -587,7 +587,7 @@ particle-inertia
 particle-inertia
 0
 1.0
-0.3
+0.25
 0.01
 1
 NIL
@@ -629,7 +629,7 @@ particle-speed-limit
 particle-speed-limit
 1
 20
-13
+5
 1
 1
 NIL
@@ -643,7 +643,7 @@ CHOOSER
 highlight-mode
 highlight-mode
 "None" "Best found" "True best"
-2
+1
 
 MONITOR
 320
@@ -680,8 +680,8 @@ CHOOSER
 55
 fitness_function
 fitness_function
-"Example function" "Fitness function 1" "Fitness function 2" "Fitness function 3" "Fitness function 4" "Fitness function 5" "Fitness function 6"
-1
+"Example function" "Fitness function 1" "Schwefel" "Fitness function 3" "Schaffer" "Eggholder" "Fitness function 6"
+5
 
 SWITCH
 10
@@ -690,7 +690,7 @@ SWITCH
 143
 Constraints
 Constraints
-1
+0
 1
 -1000
 
@@ -730,7 +730,7 @@ CHOOSER
 constraint_handling_method
 constraint_handling_method
 "Rejection Method" "Penalty Method"
-0
+1
 
 INPUTBOX
 320
@@ -796,7 +796,7 @@ CHOOSER
 Constraint
 Constraint
 "Example" "Constraint 1" "Constraint 2" "Constraint 3" "Constraint 4" "Constraint 5" "Constraint 6" "Constraint 7" "Constraint 8" "Constraint 9" "Constraint 10"
-0
+1
 
 PLOT
 10
