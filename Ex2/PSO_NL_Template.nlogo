@@ -45,6 +45,7 @@ globals
   max-y;           ; maximum y coordinate
 
   iterations       ; counter for iterations
+  last-improvement ; iteration of last global-best-val
 ]
 
 ; The function setup initilizes the search landscape and the agents
@@ -297,6 +298,7 @@ to update-global-best
       set global-best-val personal-best-val
       set global-best-x personal-best-x
       set global-best-y personal-best-y
+      set last-improvement (iterations + 1)
     ]
   ]
 end
@@ -688,7 +690,7 @@ CHOOSER
 fitness_function
 fitness_function
 "Example function" "Fitness function 1" "Schwefel" "Fitness function 3" "Schaffer" "Eggholder" "Easom" "Booth"
-0
+4
 
 SWITCH
 10
@@ -697,7 +699,7 @@ SWITCH
 143
 Constraints
 Constraints
-1
+0
 1
 -1000
 
@@ -822,6 +824,17 @@ false
 "" ""
 PENS
 "default" 1.0 0 -5298144 true "" "plot global-best-val"
+
+MONITOR
+330
+510
+437
+555
+NIL
+last-improvement
+1
+1
+11
 
 @#$#@#$#@
 ## WHAT IS IT?
