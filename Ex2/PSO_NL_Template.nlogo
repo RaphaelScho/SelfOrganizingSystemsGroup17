@@ -94,9 +94,12 @@ to initialize-topology
      if fitness_function  = "Eggholder"
        [set val fittness_function_eggholder pxcor pycor]
 
-     if fitness_function = "Fitness function 6"
-       [set val fittness_function_6 pxcor pycor]
-
+     if fitness_function = "Easom"
+       [set val fittness_function_easom pxcor pycor]
+      
+     if fitness_function = "Booth"
+       [set val fittness_function_booth pxcor pycor]
+       
   ]
 
   let min-val min [val] of patches
@@ -327,9 +330,14 @@ to-report fittness_function_eggholder [x y]
   report (-(y + 47) * sin(sqrt(abs(y + x / 2 + 47))) - x * sin(sqrt(abs(x - y - 47))));
 end
 
-; dummy random fitness function to be implemented by students
-to-report fittness_function_6 [x y]
-  report random-normal 0 1;
+; easom
+to-report fittness_function_easom [x y]
+  report cos(x) * cos(y) * e ^ (-((x - pi) ^ 2 + (y - pi) ^ 2))
+end
+
+; booth
+to-report fittness_function_booth [x y]
+  report -1 * ((x + 2 * y) ^ 2 + (2 * x + y - 5) ^ 2)
 end
 
 
@@ -360,17 +368,17 @@ end
 
 ; dummy random constrinat to be implemented by students
 to-report constrain_5 [x y]
-  report FALSE
+  report x > y
 end
 
 ; dummy random constrinat to be implemented by students
 to-report constrain_6 [x y]
-  report FALSE
+  report 10 * x < y ^ 2
 end
 
 ; dummy random constrinat to be implemented by students
 to-report constrain_7 [x y]
-  report FALSE
+  report tan(2 * x) < tan(4 * y)
 end
 
 
@@ -639,7 +647,7 @@ CHOOSER
 highlight-mode
 highlight-mode
 "None" "Best found" "True best"
-1
+2
 
 MONITOR
 320
@@ -677,7 +685,7 @@ CHOOSER
 fitness_function
 fitness_function
 "Example function" "Fitness function 1" "Schwefel" "Fitness function 3" "Schaffer" "Eggholder" "Fitness function 6"
-5
+6
 
 SWITCH
 10
@@ -686,7 +694,7 @@ SWITCH
 143
 Constraints
 Constraints
-0
+1
 1
 -1000
 
@@ -792,7 +800,7 @@ CHOOSER
 Constraint
 Constraint
 "Example" "Constraint 1" "Constraint 2" "Constraint 3" "Constraint 4" "Constraint 5" "Constraint 6" "Constraint 7" "Constraint 8" "Constraint 9" "Constraint 10"
-2
+4
 
 PLOT
 10
