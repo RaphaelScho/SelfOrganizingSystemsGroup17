@@ -256,6 +256,9 @@ to update-particle-positions
     [
        set vx -1 * vx_bak
        set vy -1 * vy_bak
+
+       set xcor x_bak
+       set ycor y_bak
     ]
 
     [
@@ -684,8 +687,8 @@ CHOOSER
 55
 fitness_function
 fitness_function
-"Example function" "Fitness function 1" "Schwefel" "Fitness function 3" "Schaffer" "Eggholder" "Fitness function 6"
-6
+"Example function" "Fitness function 1" "Schwefel" "Fitness function 3" "Schaffer" "Eggholder" "Easom" "Booth"
+0
 
 SWITCH
 10
