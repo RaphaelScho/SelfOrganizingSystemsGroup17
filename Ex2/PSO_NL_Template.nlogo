@@ -349,7 +349,7 @@ end
 
 ; dummy random constrinat to be implemented by students
 to-report constrain_2 [x y]
-  report ((x > 3 * y) or (3 * x > y))
+  report ((x > 3 * y) or (3 * x < y))
 end
 
 ; dummy random constrinat to be implemented by students
@@ -796,7 +796,7 @@ CHOOSER
 Constraint
 Constraint
 "Example" "Constraint 1" "Constraint 2" "Constraint 3" "Constraint 4" "Constraint 5" "Constraint 6" "Constraint 7" "Constraint 8" "Constraint 9" "Constraint 10"
-1
+2
 
 PLOT
 10
