@@ -253,10 +253,6 @@ to update-particle-positions
     [
        set vx -1 * vx_bak
        set vy -1 * vy_bak
-
-       set xcor x_bak
-       set ycor y_bak
-
     ]
 
     [
@@ -359,7 +355,7 @@ end
 
 ; dummy random constrinat to be implemented by students
 to-report constrain_4 [x y]
-  report FALSE
+  report (x ^ 2 + y ^ 2 < 9000 and x ^ 2 + y ^ 2 > 4000)
 end
 
 ; dummy random constrinat to be implemented by students
