@@ -1,0 +1,17 @@
+workingDirectory=.
+outputDirectory=.
+namePrefix=group17
+vectorFileName=demo.in
+sparseData=yes
+isNormalized=yes
+templateFileName=demo.tv
+#cacheSize=
+
+randomSeed=17
+xSize=12
+ySize=8
+learnRate=0.75
+#sigma=12
+#tau=
+#metricName=
+numIterations=2000
