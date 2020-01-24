@@ -1,10 +1,10 @@
 workingDirectory=.
 outputDirectory=.
 namePrefix=group17
-vectorFileName=demo.in
-sparseData=yes
+vectorFileName=input_vector_file.in
+sparseData=no
 isNormalized=yes
-templateFileName=demo.tv
+templateFileName=template_vector_file.tv
 #cacheSize=
 
 randomSeed=17
@@ -14,4 +14,4 @@ learnRate=0.75
 #sigma=12
 #tau=
 #metricName=
-numIterations=2000
+numIterations=350000
