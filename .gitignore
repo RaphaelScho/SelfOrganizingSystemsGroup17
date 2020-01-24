@@ -164,3 +164,4 @@ ipython_config.py
 # End of https://www.gitignore.io/api/pycharm,intellij,jupyternotebooks
 
 Ex2/backup.txt
+Ex3/data/mnist_784.csv
