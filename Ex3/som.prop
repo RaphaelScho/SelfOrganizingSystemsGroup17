@@ -1,10 +1,10 @@
 workingDirectory=.
-outputDirectory=.
+outputDirectory=data/out
 namePrefix=group17
-vectorFileName=data/input_vector_file.in
+vectorFileName=data/input_vector_file_sampled.in
 sparseData=no
 isNormalized=yes
-templateFileName=data/template_vector_file.tv
+templateFileName=data/template_vector_file_sampled.tv
 #cacheSize=
 
 randomSeed=17
