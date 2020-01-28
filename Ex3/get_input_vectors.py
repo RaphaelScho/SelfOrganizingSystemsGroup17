@@ -2,8 +2,8 @@ def create_input_vectors():
 	out = ""
 	counter = 0
 	skip_first = True
-	with open("data/mnist_784.csv", "r") as f_in:
-		with open("data/input_vector_file.in", "a") as f_out:
+	with open("data/mnist_784_sampled.csv", "r") as f_in:
+		with open("data/input_vector_file_sampled.in", "a") as f_out:
 			f_out.write("$TYPE inputvec\n" + \
 						"$XDIM 70000\n" + \
 						"$YDIM 1\n" + \
@@ -33,4 +33,4 @@ def create_template_vectors():
 
 if __name__ == '__main__':
 	create_input_vectors()
-	create_template_vectors()
+	#create_template_vectors()
