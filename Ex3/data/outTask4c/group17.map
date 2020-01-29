@@ -1,0 +1,37 @@
+$TYPE som
+$GRID_TOPOLOGY planar
+$GRID_LAYOUT rectangular
+$XDIM 30
+$YDIM 35
+$ZDIM 1
+$VEC_DIM 784
+$STORAGE_DATE 29.01.20 21:01
+$TRAINING_TIME 
+$LEARNRATE_TYPE exponential
+$LEARNRATE_INIT 0.8
+$NEIGHBORHOOD_TYPE exponential
+$NEIGHBORHOOD_INIT 100.0
+$RAND_INIT 17
+$ITERATIONS_TOTAL 15000
+$NR_TRAINVEC_TOTAL 1000
+$ADAPTIVE_COORDINATES_THRESHOLD 
+$VEC_NORMALIZED false
+$QUANTERROR_MAP 1544.69493377201
+$QUANTERROR_VEC 1.54469493377201
+$URL_TRAINING_VEC C:\Users\Valentin\PycharmProjects\SelfOrganizingSystemsGroup17\Ex3\data/input_vector_file_sampled1000.in
+$URL_TRAINING_VEC_DESCR 
+$URL_WEIGHT_VEC C:\Users\Valentin\PycharmProjects\SelfOrganizingSystemsGroup17\Ex3\data/outTask4c\group17.wgt
+$URL_QUANTERR_MAP 
+$URL_MAPPED_INPUT_VEC 
+$URL_MAPPED_INPUT_VEC_DESCR 
+$URL_UNIT_DESCR C:\Users\Valentin\PycharmProjects\SelfOrganizingSystemsGroup17\Ex3\data/outTask4c\group17.unit
+$URL_TEMPLATE_VECTOR C:\Users\Valentin\PycharmProjects\SelfOrganizingSystemsGroup17\Ex3\data/template_vector_file_sampled1000.tv
+$URL_DATA_WINNER_MAPPING C:\Users\Valentin\PycharmProjects\SelfOrganizingSystemsGroup17\Ex3\data/outTask4c\group17.dwm
+$URL_CLASS_INFO 
+$URL_LABELS 
+$METRIC at.tuwien.ifs.somtoolbox.layers.metrics.L2Metric
+$LAYER_REVISION $Revision: 4300 $
+$DESCRIPTION 
+$AVAILABLE_VIS 
+$DATA_TYPE unknown
+$DATA_DIM 
