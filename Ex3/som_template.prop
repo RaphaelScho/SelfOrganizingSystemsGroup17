@@ -8,11 +8,11 @@ templateFileName=data/template_vector_file_sampled1000.tv
 #cacheSize=
 
 randomSeed=17
-xSize=10
-ySize=15
-learnRate=0.75
-sigma=15
+xSize=15
+ySize=17
+learnRate=0.8
+sigma=25
 #tau=
 metricName=L2Metric
 growthQualityMeasureName=QuantizationError.MQE_Map
-numIterations=5000
+numIterations=15000
