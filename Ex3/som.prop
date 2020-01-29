@@ -1,17 +1,18 @@
 workingDirectory=.
 outputDirectory=data/out
 namePrefix=group17
-vectorFileName=data/input_vector_file_sampled.in
+vectorFileName=data/input_vector_file_sampled1000.in
 sparseData=no
 isNormalized=yes
-templateFileName=data/template_vector_file_sampled.tv
+templateFileName=data/template_vector_file_sampled1000.tv
 #cacheSize=
 
 randomSeed=17
-xSize=20
-ySize=20
+xSize=10
+ySize=15
 learnRate=0.75
-sigma=100
+sigma=5
 #tau=
-#metricName=
-numIterations=50000
+metricName=L2Metric
+growthQualityMeasureName=QuantizationError.MQE_Map
+numIterations=5000
