@@ -8,12 +8,12 @@ def create_input_vectors():
 				f_cls.write("$NUM_CLASSES 10\n" +
 							"$CLASS_NAMES 0 1 2 3 4 5 6 7 8 9\n" +
 							"$XDIM 2\n" +
-							"$YDIM {}\n\n".format(num_vectors))
+							"$YDIM {}\n".format(num_vectors))
 
 				f_vec.write("$TYPE inputvec\n" + \
 							"$XDIM {}\n".format(num_vectors) + \
 							"$YDIM 1\n" + \
-							"$VEC_DIM 784\n\n")
+							"$VEC_DIM 784\n")
 				for line in f_csv:
 					if skip_first:
 						skip_first = False
@@ -35,7 +35,7 @@ def create_template_vectors():
 		f.write("$TYPE template\n" +
 				"$XDIM 7\n" +
 				"$YDIM {}\n".format(num_vectors) +
-				"$VECDIM 784\n\n")
+				"$VECDIM 784\n")
 		for i in range(784):
 			f.write("{} pixel{} 1 1 1 1 1\n".format(i, i + 1))
 
