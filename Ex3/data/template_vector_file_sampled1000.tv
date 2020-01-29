@@ -1,8 +1,7 @@
 $TYPE template
 $XDIM 7
-$YDIM 70000
+$YDIM 1000
 $VECDIM 784
-
 0 pixel1 1 1 1 1 1
 1 pixel2 1 1 1 1 1
 2 pixel3 1 1 1 1 1
