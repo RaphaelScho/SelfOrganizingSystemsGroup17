@@ -168,3 +168,5 @@ Ex3/data/mnist_784.csv
 Ex3/data/input_vector_file.in
 
 #som-toolbox/
+*.log*
+Ex3/som.prop
