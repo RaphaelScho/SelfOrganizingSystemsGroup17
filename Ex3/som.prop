@@ -1,5 +1,5 @@
 workingDirectory=.
-outputDirectory=data/out
+outputDirectory=data/outTask8
 namePrefix=group17
 vectorFileName=data/input_vector_file_sampled1000.in
 sparseData=no
@@ -8,11 +8,11 @@ templateFileName=data/template_vector_file_sampled1000.tv
 #cacheSize=
 
 randomSeed=17
-xSize=10
-ySize=15
-learnRate=0.75
-sigma=5
+xSize=30
+ySize=35
+learnRate=0.8
+sigma=3
 #tau=
 metricName=L2Metric
 growthQualityMeasureName=QuantizationError.MQE_Map
-numIterations=5000
+numIterations=65000
